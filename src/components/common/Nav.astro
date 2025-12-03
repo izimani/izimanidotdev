@@ -1,0 +1,57 @@
+---
+type NavigationItem = {
+  title: string;
+  href: string;
+};
+
+const navigation: NavigationItem[] = [
+  {
+    title: "home",
+    href: "/",
+  },
+  {
+    title: "shorts",
+    href: "/shorts",
+  },
+  {
+    title: "posts",
+    href: "/posts",
+  },
+  {
+    title: "story",
+    href: "/story",
+  },
+  {
+    title: "contact",
+    href: "/contact",
+  },
+];
+---
+
+<nav class="nav">
+  <style>
+    .nav {
+      padding: 0.5rem 0 1.5rem 0;
+
+      display: flex;
+      flex-flow: row nowrap;
+      gap: 2rem;
+
+      & > a {
+        font-size: 1rem;
+        line-height: 1.5;
+        font-family: var(--flow-font);
+        font-weight: 400;
+        color: var(--color-charcoal);
+        text-decoration: none;
+        transition: color 0.3s ease;
+
+        &:hover {
+          color: var(--color-deep-emerald);
+        }
+      }
+    }
+  </style>
+
+  {navigation.map((item) => <a href={item.href}>{item.title}</a>)}
+</nav>

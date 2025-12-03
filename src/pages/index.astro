@@ -1,0 +1,50 @@
+---
+import { BaseLayout } from "../layouts";
+import { Header, HeaderVariant } from "../components/common";
+import Content from "../content/index.md";
+---
+
+<BaseLayout title="Izimani Dot Dev" description="Izimani Dot Dev">
+  <style>
+    :root {
+      --content-width: 700px;
+      --page-margin: 5rem;
+    }
+
+    body {
+      margin: 0 var(--page-margin);
+    }
+
+    .content {
+      max-width: var(--content-width);
+      margin: 0 auto;
+      padding: 1rem 0;
+      font-family: var(--flow-font);
+
+      & > :global(h2) {
+        font-size: 1.25rem;
+        line-height: 1;
+        font-family: var(--font-vollkorn);
+        font-weight: 600;
+        font-style: italic;
+        color: var(--color-deep-emerald);
+      }
+
+      & > :global(*:not(:last-child)) {
+        margin-bottom: 1rem;
+      }
+
+      & > :global(p) {
+        line-height: 1.7;
+      }
+    }
+  </style>
+  <Header
+    variant={HeaderVariant.Home}
+    title=""
+    description="The (mostly) software engineering site of Attila Bagossy."
+  />
+  <main class="content">
+    <Content />
+  </main>
+</BaseLayout>

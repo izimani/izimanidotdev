@@ -1,0 +1,83 @@
+---
+import Nav from "./Nav.astro";
+
+export enum HeaderVariant {
+  Home = "home",
+  Subpage = "subpage",
+}
+
+interface Props {
+  variant: HeaderVariant;
+  title: string;
+  description: string;
+}
+
+const { variant, title, description } = Astro.props;
+---
+
+<style>
+  :root {
+    --bar-height: 10px;
+  }
+
+  .title {
+    width: 100%;
+    padding: 3rem 0 1rem 0;
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: baseline;
+
+    & .main {
+      font-size: 4.5rem;
+      line-height: 1;
+      font-family: var(--font-vollkorn);
+      font-weight: 600;
+      font-style: italic;
+      color: var(--color-deep-emerald);
+      letter-spacing: -0.03em;
+    }
+
+    & .sub {
+      font-size: 1rem;
+      line-height: 1.5;
+      font-family: var(--font-ibm-plex-serif);
+      font-weight: 300;
+      color: var(--color-charcoal);
+    }
+
+    &.title__subpage {
+      & .main {
+        font-size: 2.5rem;
+      }
+    }
+  }
+
+  .decoration-bar {
+    & > * {
+      width: 100%;
+      height: var(--bar-height);
+      border-top: 1px solid var(--color-deep-emerald);
+      border-bottom: 1px solid var(--color-deep-emerald);
+    }
+  }
+</style>
+
+<header>
+  <hgroup
+    class:list={[
+      "title",
+      variant === HeaderVariant.Subpage && "title__subpage",
+    ]}
+  >
+    <h1 class="main">
+      Izimani{
+        title && <span style="color: var(--color-charcoal);"> | {title}</span>
+      }
+    </h1>
+    <p class="sub">{description}</p>
+  </hgroup>
+  <div class="decoration-bar">
+    <div class="print-bg"></div>
+  </div>
+  <Nav />
+</header>
