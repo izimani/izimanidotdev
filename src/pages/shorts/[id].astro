@@ -1,0 +1,35 @@
+---
+import { SubpageLayout } from "../../layouts";
+import { getSortedLiveShorts } from "../../shorts";
+import type { CollectionEntry } from "astro:content";
+import { ShortListing } from "../../components/pages/shorts";
+
+export async function getStaticPaths() {
+  function shortToPath(short: CollectionEntry<"shorts">) {
+    return {
+      params: {
+        id: short.id,
+      },
+      props: {
+        short,
+      },
+    };
+  }
+
+  return (await getSortedLiveShorts()).map(shortToPath);
+}
+
+interface Props {
+  short: CollectionEntry<"shorts">;
+}
+
+const { short } = Astro.props;
+const shorts = [short];
+---
+
+<SubpageLayout
+  title="Shorts"
+  description="Short and not-so-short but definitely unstructured feed of my thoughts and ideas."
+>
+  <ShortListing shorts={shorts} />
+</SubpageLayout>

@@ -1,0 +1,26 @@
+---
+interface Props {
+  date: Date;
+  class?: string;
+}
+
+const { date, class: className = "" } = Astro.props;
+
+const months = [
+  "Jan",
+  "Feb",
+  "Mar",
+  "Apr",
+  "May",
+  "Jun",
+  "Jul",
+  "Aug",
+  "Sep",
+  "Oct",
+  "Nov",
+  "Dec",
+];
+const formattedDate = `${months[date.getMonth()]} ${date.getDate()}, ${date.getFullYear()}`;
+---
+
+<time datetime={date.toISOString()} class={className}>{formattedDate}</time>

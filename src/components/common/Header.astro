@@ -35,6 +35,11 @@ const { variant, title, description } = Astro.props;
       font-style: italic;
       color: var(--color-deep-emerald);
       letter-spacing: -0.03em;
+
+      & > a {
+        color: var(--color-deep-emerald);
+        text-decoration: none;
+      }
     }
 
     & .sub {
@@ -70,7 +75,7 @@ const { variant, title, description } = Astro.props;
     ]}
   >
     <h1 class="main">
-      Izimani{
+      <a href="/">Izimani</a>{
         title && <span style="color: var(--color-charcoal);"> | {title}</span>
       }
     </h1>

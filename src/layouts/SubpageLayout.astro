@@ -12,11 +12,15 @@ const { title, description } = Astro.props;
 
 <style>
   :root {
-    --page-margin: 5rem;
+    --page-margin: 0 5rem;
+
+    @media (max-width: 768px) {
+      --page-margin: 0 20px;
+    }
   }
 
   body {
-    margin: 0 var(--page-margin);
+    margin: var(--page-margin);
   }
 </style>
 

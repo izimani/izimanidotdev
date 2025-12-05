@@ -1,10 +1,14 @@
 ---
 import { SubpageLayout } from "../layouts";
+import { ShortListing } from "../components/pages/shorts";
+import { getSortedLiveShorts } from "../shorts";
+
+const shorts = await getSortedLiveShorts();
 ---
 
 <SubpageLayout
   title="Shorts"
-  description="Short and not-so-short but definitely unstructured feed around my thoughts and ideas."
+  description="Short and not-so-short but definitely unstructured feed of my thoughts and ideas."
 >
-  <h1>Posts</h1>
+  <ShortListing shorts={shorts} />
 </SubpageLayout>

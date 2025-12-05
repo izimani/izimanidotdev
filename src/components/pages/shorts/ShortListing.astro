@@ -1,0 +1,90 @@
+---
+import type { CollectionEntry } from "astro:content";
+import { shortToLink } from "../../../shorts";
+
+interface Props {
+  shorts: CollectionEntry<"shorts">[];
+}
+
+const { shorts } = Astro.props;
+---
+
+<style>
+  :root {
+    --date-width: 150px;
+    --date-color: var(--color-dim-grey);
+
+    --content-width: 700px;
+    --content-color: var(--color-charcoal);
+
+    --title-color: var(--color-deep-emerald);
+  }
+
+  .short {
+    margin-left: calc(50% - (var(--content-width) / 2 + var(--date-width)));
+    max-width: calc(var(--content-width) + var(--date-width));
+    display: grid;
+    grid-template-columns: var(--date-width) 1fr;
+    gap: 1rem;
+    font-family: var(--flow-font);
+
+    @media (max-width: 768px) {
+      margin: 0 auto;
+      max-width: 100%;
+      grid-template-columns: 1fr;
+      gap: 0.5rem;
+    }
+  }
+
+  .short-link {
+    display: block;
+    width: var(--date-width);
+    color: var(--date-color);
+    text-decoration: none;
+    font-weight: 300;
+    transition: color 0.3s ease;
+
+    &:hover {
+      color: var(--color-deep-emerald);
+    }
+  }
+
+  .short-title {
+    font-weight: 600;
+    color: var(--title-color);
+  }
+
+  .short-content {
+    grid-column: 2 / 3;
+    color: var(--content-color);
+
+    @media (max-width: 768px) {
+      grid-column: 1 / 2;
+    }
+
+    & > :global(*:not(:last-child)) {
+      margin-bottom: 1rem;
+    }
+
+    & > :global(p) {
+      line-height: 1.7;
+    }
+  }
+</style>
+<div class="short-listing">
+  {
+    shorts.map((short) => (
+      <article class="short">
+        <a href={shortToLink(short)} class="short-link">
+          <time datetime={short.data.date.toISOString()} class="short-date">
+            {short.data.date.toLocaleDateString()}
+          </time>
+        </a>
+        <h2 class="short-title">{short.data.title}</h2>
+        <div class="short-content">
+          <p>{short.body}</p>
+        </div>
+      </article>
+    ))
+  }
+</div>
