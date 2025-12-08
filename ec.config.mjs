@@ -16,6 +16,7 @@ export default defineEcConfig({
 
   styleOverrides: {
     codeFontSize: "0.8rem",
+    codeFontFamily: "var(--code-font)",
   },
 
   shiki: {
