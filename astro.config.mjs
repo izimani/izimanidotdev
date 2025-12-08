@@ -3,6 +3,8 @@ import { defineConfig } from "astro/config";
 
 import sitemap from "@astrojs/sitemap";
 import playformCompress from "@playform/compress";
+import markdoc from "@astrojs/markdoc";
+import expressiveCode from "astro-expressive-code";
 
 // https://astro.build/config
 export default defineConfig({
@@ -16,6 +18,8 @@ export default defineConfig({
         },
       },
     }),
+    markdoc(),
+    expressiveCode(),
   ],
 
   vite: {

@@ -1,8 +1,8 @@
 ---
-import { SubpageLayout } from "../../layouts";
+import SubpageLayout from "#layouts/SubpageLayout.astro";
 import { getSortedLiveShorts } from "../../shorts";
 import type { CollectionEntry } from "astro:content";
-import { ShortListing } from "../../components/pages/shorts";
+import ShortListing from "#components/pages/shorts/ShortListing.astro";
 
 export async function getStaticPaths() {
   function shortToPath(short: CollectionEntry<"shorts">) {

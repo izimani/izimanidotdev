@@ -1,0 +1,13 @@
+---
+import Figure from "./Figure.astro";
+
+interface Props {
+  caption?: string;
+}
+
+const { caption } = Astro.props;
+---
+
+<Figure caption={caption}>
+  <slot />
+</Figure>

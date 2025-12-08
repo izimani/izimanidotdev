@@ -20,6 +20,10 @@ const { shorts } = Astro.props;
     --title-color: var(--color-deep-emerald);
   }
 
+  .short-listing {
+    min-height: 50vh;
+  }
+
   .short {
     margin-left: calc(50% - (var(--content-width) / 2 + var(--date-width)));
     max-width: calc(var(--content-width) + var(--date-width));
@@ -52,6 +56,7 @@ const { shorts } = Astro.props;
   .short-title {
     font-weight: 600;
     color: var(--title-color);
+    line-height: 1;
   }
 
   .short-content {

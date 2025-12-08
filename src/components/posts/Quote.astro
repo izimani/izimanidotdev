@@ -1,0 +1,57 @@
+---
+interface Props {
+  who?: string;
+  source?: string;
+  sourceUrl?: string;
+}
+
+const { who, source, sourceUrl } = Astro.props;
+---
+
+<style>
+  .quote {
+    position: relative;
+    font-style: italic;
+    font-size: 0.9rem;
+    color: var(--color-dim-grey);
+    padding-left: 1rem;
+    margin-left: 1rem;
+
+    &::before {
+      position: absolute;
+      top: -30px;
+      font-size: 72px;
+      content: "“";
+      left: -8px;
+      color: var(--color-lilac-ash);
+    }
+  }
+
+  .quote > blockquote > :global(p) {
+    margin: 0 1.5rem;
+  }
+
+  .quote-caption {
+    font-size: 0.8rem;
+    color: var(--color-dim-grey);
+    text-align: right;
+    margin-top: 1rem;
+  }
+
+  .quote-caption > cite::before {
+    content: ", ";
+  }
+</style>
+<figure class="quote">
+  <blockquote cite={sourceUrl}>
+    <slot />
+  </blockquote>
+  {
+    (who || source) && (
+      <figcaption class="quote-caption">
+        <span>{who}</span>
+        <cite>{source}</cite>
+      </figcaption>
+    )
+  }
+</figure>

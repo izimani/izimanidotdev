@@ -1,0 +1,24 @@
+---
+import { Code } from "astro-expressive-code/components";
+
+interface Props {
+  content: string;
+  language?: string;
+  meta?: string;
+  collapse?: string;
+  showLineNumbers?: boolean;
+  startLineNumber?: number;
+}
+
+const { content, language, meta, collapse, showLineNumbers, startLineNumber } =
+  Astro.props;
+---
+
+<Code
+  code={content}
+  lang={language}
+  meta={meta}
+  collapse={collapse}
+  showLineNumbers={showLineNumbers}
+  startLineNumber={startLineNumber}
+/>

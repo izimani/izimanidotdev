@@ -1,0 +1,70 @@
+---
+import type { CollectionEntry } from "astro:content";
+import Time from "#components/common/Time.astro";
+import { getReadingTime } from "../../util/reading-time";
+
+interface Props {
+  post: CollectionEntry<"posts">;
+}
+
+const { post } = Astro.props;
+
+const minutesRead = getReadingTime(post.body ?? "");
+---
+
+<style>
+  .metadata {
+    grid-column: 1 / 1;
+    padding-top: 0.25rem;
+    display: flex;
+    flex-flow: column wrap;
+    align-items: end;
+    justify-content: start;
+    font-size: 0.8rem;
+    line-height: 1.5;
+    font-family: var(--flow-font);
+    font-weight: 300;
+    color: var(--color-dim-grey);
+    padding-right: 1rem;
+    padding-left: 10px;
+
+    & :global(*)::selection {
+      background-color: var(--color-dim-grey);
+      color: var(--color-paper-beige);
+    }
+
+    @media (max-width: 1300px) {
+      grid-column: 2 / 3;
+      flex-flow: row wrap;
+      gap: 0.5rem;
+      justify-content: flex-start;
+      padding-left: 0;
+      padding-right: 0;
+
+      & > .metadata-separator::before {
+        content: "•";
+        color: var(--color-dim-grey);
+      }
+    }
+  }
+</style>
+<aside class="metadata">
+  <span>
+    by <a href="/" class="author">Attila Bagossy</a>
+  </span>
+  <span class="metadata-separator"></span>
+  {
+    post.data.updated && (
+      <span>
+        last updated <Time date={post.data.updated} />
+      </span>
+    )
+  }
+  <span>
+    {post.data.updated && "originally "} published <Time
+      date={post.data.date}
+    />
+  </span>
+  <span class="metadata-separator"></span>
+  {minutesRead && <span>{minutesRead} mins to read</span>}
+</aside>

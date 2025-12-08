@@ -15,7 +15,7 @@ const shorts = defineCollection({
 
 const posts = defineCollection({
   loader: glob({
-    pattern: "*.md",
+    pattern: "*.mdoc",
     base: "src/content/posts",
   }),
   schema: z.object({

@@ -1,6 +1,6 @@
 ---
-import { SubpageLayout } from "../layouts";
-import { ShortListing } from "../components/pages/shorts";
+import SubpageLayout from "#layouts/SubpageLayout.astro";
+import ShortListing from "#components/pages/shorts/ShortListing.astro";
 import { getSortedLiveShorts } from "../shorts";
 
 const shorts = await getSortedLiveShorts();
