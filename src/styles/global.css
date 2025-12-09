@@ -23,8 +23,14 @@
     var(--color-charcoal)
   );
   --text-color: light-dark(var(--color-charcoal), var(--color-paper-beige));
-  --accent-color: var(--color-deep-emerald);
-  --accent-color-light: var(--color-muted-teal);
+  --accent-color: light-dark(
+    var(--color-deep-emerald),
+    var(--color-muted-teal)
+  );
+  --accent-color-light: light-dark(
+    var(--color-muted-teal),
+    var(--color-deep-emerald)
+  );
   --code-font: var(--font-ibm-plex-mono);
   --note-color: light-dark(var(--color-dim-grey), var(--color-lilac-ash));
 }

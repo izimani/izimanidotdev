@@ -6,6 +6,7 @@ import DecorationBar from "#components/common/DecorationBar.astro";
 import { getSortedLivePosts } from "../../posts";
 import { render, type CollectionEntry } from "astro:content";
 import Metadata from "#components/posts/Metadata.astro";
+import ColorSchemeSwitch from "#components/common/ColorSchemeSwitch.astro";
 
 export async function getStaticPaths() {
   function postToPath(post: CollectionEntry<"posts">) {
@@ -33,6 +34,7 @@ const { Content } = await render(post);
 
 <style>
   :root {
+    --code-font-size: 0.8rem;
     --page-margin: 4rem 0;
     --content-side-margin: 20px;
     --title-size: 3rem;
@@ -43,6 +45,9 @@ const { Content } = await render(post);
     --escape-width: 80%;
 
     @media (max-width: 768px) {
+      --title-size: 2.5rem;
+      --subtitle-size: 1.25rem;
+      --code-font-size: 0.65rem;
       --page-margin: 20px 0;
       --content-width: calc(100% - 2 * var(--content-side-margin));
       --escape-width: var(--content-width);
@@ -66,13 +71,7 @@ const { Content } = await render(post);
     font-family: var(--flow-font);
     font-weight: 300;
 
-    @media (max-width: 768px) {
-      display: flex;
-      flex-flow: row nowrap;
-      justify-content: end;
-    }
-
-    & > a {
+    & .all-posts-link {
       display: block;
       text-decoration: none;
       color: var(--text-color);
@@ -91,6 +90,20 @@ const { Content } = await render(post);
     & ::selection {
       background-color: var(--text-color);
       color: var(--background-color);
+    }
+  }
+
+  .nav-wrapper {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+
+    @media (max-width: 768px) {
+      flex-flow: column nowrap;
+      align-items: end;
+      gap: 1rem;
     }
   }
 
@@ -130,6 +143,12 @@ const { Content } = await render(post);
       color: var(--background-color);
     }
   }
+
+  .content {
+    @media (max-width: 768px) {
+      padding-top: 1rem;
+    }
+  }
 </style>
 <style is:global>
   .to-center {
@@ -140,7 +159,12 @@ const { Content } = await render(post);
 </style>
 <BaseLayout title={post.data.title} description={post.data.excerpt}>
   <nav class="nav to-center">
-    <a href="/posts">All posts on izimani</a>
+    <div class="nav-wrapper">
+      <a class="all-posts-link" href="/posts">All posts on izimani</a>
+      <div class="color-scheme-switch-wrapper">
+        <ColorSchemeSwitch />
+      </div>
+    </div>
   </nav>
   <header class="header to-center">
     <hgroup>

@@ -15,7 +15,7 @@ export default defineEcConfig({
   },
 
   styleOverrides: {
-    codeFontSize: "0.8rem",
+    codeFontSize: "var(--code-font-size)",
     codeFontFamily: "var(--code-font)",
   },
 

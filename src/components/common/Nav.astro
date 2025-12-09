@@ -1,6 +1,4 @@
 ---
-import ColorSchemeSwitch from "./ColorSchemeSwitch.astro";
-
 type NavigationItem = {
   title: string;
   href: string;
@@ -60,5 +58,4 @@ const navigation: NavigationItem[] = [
   </style>
 
   {navigation.map((item) => <a href={item.href}>{item.title}</a>)}
-  <ColorSchemeSwitch />
 </nav>

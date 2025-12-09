@@ -1,7 +1,7 @@
 ---
 enum ColorScheme {
   Light = "light",
-  Auto = "auto",
+  Auto = "light dark",
   Dark = "dark",
 }
 
@@ -90,7 +90,13 @@ export const ColorSchemeLocalStorageKey = "color-scheme";
 
     console.log("Initial color scheme:", colorScheme.content);
 
+    fireColorSchemeChangeEvent(colorScheme.content);
+
     function handleColorSchemeChange(clickedButton) {
+      if (clickedButton.value === colorScheme.content) {
+        return;
+      }
+
       switchButtons.forEach((button) => {
         button.setAttribute(
           "aria-pressed",
@@ -101,7 +107,34 @@ export const ColorSchemeLocalStorageKey = "color-scheme";
       colorScheme.content = clickedButton.value;
       console.log("New color scheme:", colorScheme.content);
       localStorage.setItem(colorSchemeLocalStorageKey, colorScheme.content);
+      fireColorSchemeChangeEvent(colorScheme.content);
     }
+
+    function fireColorSchemeChangeEvent(colorScheme) {
+      if (colorScheme !== "light" && colorScheme !== "dark") {
+        if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+          colorScheme = "dark";
+        } else {
+          colorScheme = "light";
+        }
+      }
+
+      const event = new CustomEvent("color-scheme-change", {
+        detail: {
+          colorScheme,
+        },
+      });
+
+      document.dispatchEvent(event);
+    }
+
+    window
+      .matchMedia("(prefers-color-scheme: dark)")
+      .addEventListener("change", (event) => {
+        const newColorScheme = event.matches ? "dark" : "light";
+
+        fireColorSchemeChangeEvent(newColorScheme);
+      });
 
     switchButtons.forEach((button) => {
       button.addEventListener("click", () => handleColorSchemeChange(button));

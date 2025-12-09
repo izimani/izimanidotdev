@@ -1,6 +1,7 @@
 ---
 import DecorationBar from "./DecorationBar.astro";
 import Nav from "./Nav.astro";
+import ColorSchemeSwitch from "./ColorSchemeSwitch.astro";
 
 export enum HeaderVariant {
   Home = "home",
@@ -19,7 +20,7 @@ const { variant, title, description } = Astro.props;
 <style>
   :root {
     --bar-height: 10px;
-    --main-title-color: var(--color-deep-emerald);
+    --main-title-color: var(--accent-color);
     --sub-title-color: var(--text-color);
   }
 
@@ -59,22 +60,45 @@ const { variant, title, description } = Astro.props;
       }
     }
   }
+
+  .title-wrapper {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: start;
+    gap: 0.2rem;
+
+    @media (max-width: 768px) {
+      padding-bottom: 1rem;
+      flex-flow: column nowrap;
+    }
+  }
+
+  .color-scheme-switch-wrapper {
+    align-self: center;
+  }
 </style>
 
 <header>
-  <hgroup
-    class:list={[
-      "title",
-      variant === HeaderVariant.Subpage && "title__subpage",
-    ]}
-  >
-    <h1 class="main">
-      <a href="/">Izimani</a>{
-        title && <span style="color: var(--sub-title-color);"> | {title}</span>
-      }
-    </h1>
-    <p class="sub">{description}</p>
-  </hgroup>
+  <div class="title-wrapper">
+    <hgroup
+      class:list={[
+        "title",
+        variant === HeaderVariant.Subpage && "title__subpage",
+      ]}
+    >
+      <h1 class="main">
+        <a href="/">Izimani</a>{
+          title && (
+            <span style="color: var(--sub-title-color);"> | {title}</span>
+          )
+        }
+      </h1>
+      <p class="sub">{description}</p>
+    </hgroup>
+    <div class="color-scheme-switch-wrapper">
+      <ColorSchemeSwitch />
+    </div>
+  </div>
   <DecorationBar />
   <Nav />
 </header>
