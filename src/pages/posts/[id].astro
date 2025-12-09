@@ -37,7 +37,8 @@ const { Content } = await render(post);
     --content-side-margin: 20px;
     --title-size: 3rem;
     --subtitle-size: 1.5rem;
-    --title-color: var(--color-deep-emerald);
+    --title-color: var(--accent-color);
+    --subtitle-color: light-dark(var(--color-dim-grey), var(--color-lilac-ash));
     --content-width: 700px;
     --escape-width: 80%;
 
@@ -60,18 +61,25 @@ const { Content } = await render(post);
   }
 
   .nav {
-    padding: 0 0 2rem 0;
+    padding: 0 1rem 2rem 1rem;
     font-size: 0.8rem;
     font-family: var(--flow-font);
     font-weight: 300;
 
+    @media (max-width: 768px) {
+      display: flex;
+      flex-flow: row nowrap;
+      justify-content: end;
+    }
+
     & > a {
+      display: block;
       text-decoration: none;
-      color: var(--color-charcoal);
+      color: var(--text-color);
       transition: color 0.3s ease;
 
       &:hover {
-        color: var(--color-deep-emerald);
+        color: var(--accent-color);
       }
 
       &::before {
@@ -81,8 +89,8 @@ const { Content } = await render(post);
     }
 
     & ::selection {
-      background-color: var(--color-charcoal);
-      color: var(--color-paper-beige);
+      background-color: var(--text-color);
+      color: var(--background-color);
     }
   }
 
@@ -104,8 +112,8 @@ const { Content } = await render(post);
     text-wrap: balance;
 
     &::selection {
-      background-color: var(--color-deep-emerald);
-      color: var(--color-paper-beige);
+      background-color: var(--title-color);
+      color: var(--background-color);
     }
   }
 
@@ -113,13 +121,13 @@ const { Content } = await render(post);
     font-size: var(--subtitle-size);
     font-weight: 400;
     font-family: var(--font-vollkorn);
-    color: var(--color-dim-grey);
+    color: var(--subtitle-color);
     line-height: 1.5;
     text-wrap: balance;
 
     &::selection {
-      background-color: var(--color-dim-grey);
-      color: var(--color-paper-beige);
+      background-color: var(--subtitle-color);
+      color: var(--background-color);
     }
   }
 </style>

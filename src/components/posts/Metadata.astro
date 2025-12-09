@@ -24,13 +24,16 @@ const minutesRead = getReadingTime(post.body ?? "");
     line-height: 1.5;
     font-family: var(--flow-font);
     font-weight: 300;
-    color: var(--color-dim-grey);
+    color: light-dark(var(--color-dim-grey), var(--color-lilac-ash));
     padding-right: 1rem;
     padding-left: 10px;
 
     & :global(*)::selection {
-      background-color: var(--color-dim-grey);
-      color: var(--color-paper-beige);
+      background-color: light-dark(
+        var(--color-dim-grey),
+        var(--color-lilac-ash)
+      );
+      color: var(--background-color);
     }
 
     @media (max-width: 1300px) {
@@ -43,7 +46,7 @@ const minutesRead = getReadingTime(post.body ?? "");
 
       & > .metadata-separator::before {
         content: "•";
-        color: var(--color-dim-grey);
+        color: light-dark(var(--color-dim-grey), var(--color-lilac-ash));
       }
     }
   }

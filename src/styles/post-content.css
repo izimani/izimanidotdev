@@ -1,14 +1,14 @@
 .content {
   font-family: var(--flow-font);
-  color: var(--color-charcoal);
+  color: var(--text-color);
 
   & *::selection {
-    background-color: var(--color-charcoal);
-    color: var(--color-paper-beige);
+    background-color: var(--text-color);
+    color: var(--background-color);
   }
 
   & a {
-    color: var(--color-charcoal);
+    color: var(--text-color);
     text-decoration-line: underline;
     text-decoration-thickness: 2px;
     text-decoration-color: var(--color-muted-teal);
@@ -18,9 +18,9 @@
       background-color 0.3s ease;
 
     &:hover {
-      text-decoration-color: var(--color-charcoal);
-      color: var(--color-paper-beige);
-      background-color: var(--color-charcoal);
+      text-decoration-color: var(--text-color);
+      color: var(--background-color);
+      background-color: var(--text-color);
     }
   }
 
@@ -41,14 +41,14 @@
   }
 
   & :is(h1, h2, h3, h4, h5, h6) {
-    color: var(--color-deep-emerald);
+    color: var(--accent-color);
     font-family: var(--font-vollkorn);
     text-wrap: balance;
     margin-bottom: 0rem !important;
 
     &::selection {
-      background-color: var(--color-deep-emerald);
-      color: var(--color-paper-beige);
+      background-color: var(--accent-color);
+      color: var(--background-color);
     }
   }
 }

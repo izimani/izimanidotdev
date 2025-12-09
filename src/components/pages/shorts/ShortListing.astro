@@ -12,12 +12,12 @@ const { shorts } = Astro.props;
 <style>
   :root {
     --date-width: 150px;
-    --date-color: var(--color-dim-grey);
+    --date-color: light-dark(var(--color-dim-grey), var(--color-lilac-ash));
 
     --content-width: 700px;
-    --content-color: var(--color-charcoal);
+    --content-color: var(--text-color);
 
-    --title-color: var(--color-deep-emerald);
+    --title-color: var(--accent-color);
   }
 
   .short-listing {
@@ -49,7 +49,7 @@ const { shorts } = Astro.props;
     transition: color 0.3s ease;
 
     &:hover {
-      color: var(--color-deep-emerald);
+      color: var(--accent-color);
     }
   }
 

@@ -12,12 +12,11 @@ const posts = await getGroupedLivePosts();
   <style>
     :root {
       --year-width: 150px;
-      --year-color: var(--color-dim-grey);
+      --year-color: light-dark(var(--color-dim-grey), var(--color-lilac-ash));
 
       --content-width: 800px;
-
-      --title-color: var(--color-charcoal);
-      --excerpt-color: var(--color-charcoal);
+      --post-color: var(--text-color);
+      --post-title-color: var(--accent-color);
     }
 
     .post-listing {
@@ -46,7 +45,7 @@ const posts = await getGroupedLivePosts();
       font-size: 2rem;
       font-weight: 600;
       font-family: var(--font-vollkorn);
-      color: var(--color-dim-grey);
+      color: var(--year-color);
 
       position: sticky;
       top: 10px;
@@ -54,7 +53,7 @@ const posts = await getGroupedLivePosts();
 
     .post {
       font-family: var(--flow-font);
-      color: var(--color-charcoal);
+      color: var(--post-color);
     }
 
     .post-title {
@@ -62,7 +61,7 @@ const posts = await getGroupedLivePosts();
       font-weight: 600;
 
       & > a {
-        color: var(--color-deep-emerald);
+        color: var(--post-title-color);
         text-decoration: none;
         transition: color 0.3s ease;
 

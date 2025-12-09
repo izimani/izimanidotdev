@@ -13,7 +13,7 @@ const { who, source, sourceUrl } = Astro.props;
     position: relative;
     font-style: italic;
     font-size: 0.9rem;
-    color: var(--color-dim-grey);
+    color: light-dark(var(--color-dim-grey), var(--color-lilac-ash));
     padding-left: 1rem;
     margin-left: 1rem;
 
@@ -23,7 +23,7 @@ const { who, source, sourceUrl } = Astro.props;
       font-size: 72px;
       content: "“";
       left: -8px;
-      color: var(--color-lilac-ash);
+      color: light-dark(var(--color-lilac-ash), var(--color-dim-grey));
     }
   }
 
@@ -33,7 +33,7 @@ const { who, source, sourceUrl } = Astro.props;
 
   .quote-caption {
     font-size: 0.8rem;
-    color: var(--color-dim-grey);
+    color: light-dark(var(--color-dim-grey), var(--color-lilac-ash));
     text-align: right;
     margin-top: 1rem;
   }

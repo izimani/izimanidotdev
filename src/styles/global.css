@@ -18,13 +18,17 @@
 
 :root {
   --flow-font: var(--font-ibm-plex-serif);
-  --background-color: var(--color-white-smoke);
-  --text-color: var(--color-charcoal);
+  --background-color: light-dark(
+    var(--color-white-smoke),
+    var(--color-charcoal)
+  );
+  --text-color: light-dark(var(--color-charcoal), var(--color-paper-beige));
   --accent-color: var(--color-deep-emerald);
   --code-font: var(--font-ibm-plex-mono);
 }
 
 html {
+  color-scheme: light dark;
   font-size: var(--font-size);
   background-color: var(--background-color);
   color: var(--text-color);
