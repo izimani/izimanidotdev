@@ -1,4 +1,6 @@
 ---
+import ColorSchemeSwitch from "./ColorSchemeSwitch.astro";
+
 type NavigationItem = {
   title: string;
   href: string;
@@ -31,10 +33,7 @@ const navigation: NavigationItem[] = [
 <nav class="nav">
   <style>
     :root {
-      --nav-item-color: light-dark(
-        var(--color-charcoal),
-        var(--color-paper-beige)
-      );
+      --nav-item-color: var(--text-color);
     }
 
     .nav {
@@ -54,11 +53,12 @@ const navigation: NavigationItem[] = [
         transition: color 0.3s ease;
 
         &:hover {
-          color: var(--color-deep-emerald);
+          color: var(--accent-color);
         }
       }
     }
   </style>
 
   {navigation.map((item) => <a href={item.href}>{item.title}</a>)}
+  <ColorSchemeSwitch />
 </nav>

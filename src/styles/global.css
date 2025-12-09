@@ -24,11 +24,12 @@
   );
   --text-color: light-dark(var(--color-charcoal), var(--color-paper-beige));
   --accent-color: var(--color-deep-emerald);
+  --accent-color-light: var(--color-muted-teal);
   --code-font: var(--font-ibm-plex-mono);
+  --note-color: light-dark(var(--color-dim-grey), var(--color-lilac-ash));
 }
 
 html {
-  color-scheme: light dark;
   font-size: var(--font-size);
   background-color: var(--background-color);
   color: var(--text-color);

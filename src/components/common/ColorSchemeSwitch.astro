@@ -1,0 +1,112 @@
+---
+enum ColorScheme {
+  Light = "light",
+  Auto = "auto",
+  Dark = "dark",
+}
+
+type ColorSchemeButton = {
+  value: ColorScheme;
+  ariaPressed: boolean;
+  label: string;
+};
+
+const colorSchemeButtons: ColorSchemeButton[] = [
+  {
+    value: ColorScheme.Light,
+    ariaPressed: false,
+    label: "Light",
+  },
+  {
+    value: ColorScheme.Auto,
+    ariaPressed: true,
+    label: "Auto",
+  },
+  {
+    value: ColorScheme.Dark,
+    ariaPressed: false,
+    label: "Dark",
+  },
+];
+
+export const ColorSchemeLocalStorageKey = "color-scheme";
+---
+
+<style>
+  .color-scheme-switch {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    gap: 0.1rem;
+    border: 2px solid var(--text-color);
+    border-radius: 100rem;
+    padding: 0.1rem 0.2rem;
+  }
+
+  .color-scheme-button {
+    font-size: 0.8rem;
+    font-weight: 400;
+    font-family: var(--flow-font);
+    padding: 0.2rem 0.7rem;
+    border: none;
+    border-radius: 100rem;
+    background-color: transparent;
+    color: var(--text-color);
+    cursor: pointer;
+    transition:
+      color 0.3s ease,
+      background-color 0.3s ease;
+
+    &[aria-pressed="true"] {
+      background-color: var(--text-color);
+      color: var(--background-color);
+    }
+  }
+</style>
+<section aria-label="Color scheme switch" class="color-scheme-switch">
+  {
+    colorSchemeButtons.map((button) => (
+      <button
+        aria-pressed={button.ariaPressed}
+        class="color-scheme-button"
+        value={button.value}
+      >
+        {button.label}
+      </button>
+    ))
+  }
+</section>
+<script data-color-scheme-local-storage-key={ColorSchemeLocalStorageKey}>
+  (function initColorSchemeSwitch() {
+    const dataset = document.currentScript?.dataset;
+    if (!dataset) {
+      return;
+    }
+
+    const colorSchemeLocalStorageKey = dataset.colorSchemeLocalStorageKey;
+
+    const colorScheme = document.querySelector("meta[name=color-scheme]");
+    const switchButtons = document.querySelectorAll(".color-scheme-button");
+
+    console.log("Initial color scheme:", colorScheme.content);
+
+    function handleColorSchemeChange(clickedButton) {
+      switchButtons.forEach((button) => {
+        button.setAttribute(
+          "aria-pressed",
+          (button === clickedButton).toString(),
+        );
+      });
+
+      colorScheme.content = clickedButton.value;
+      console.log("New color scheme:", colorScheme.content);
+      localStorage.setItem(colorSchemeLocalStorageKey, colorScheme.content);
+    }
+
+    switchButtons.forEach((button) => {
+      button.addEventListener("click", () => handleColorSchemeChange(button));
+
+      button.setAttribute("aria-pressed", button.value === colorScheme.content);
+    });
+  })();
+</script>

@@ -24,15 +24,12 @@ const minutesRead = getReadingTime(post.body ?? "");
     line-height: 1.5;
     font-family: var(--flow-font);
     font-weight: 300;
-    color: light-dark(var(--color-dim-grey), var(--color-lilac-ash));
+    color: var(--note-color);
     padding-right: 1rem;
     padding-left: 10px;
 
     & :global(*)::selection {
-      background-color: light-dark(
-        var(--color-dim-grey),
-        var(--color-lilac-ash)
-      );
+      background-color: var(--note-color);
       color: var(--background-color);
     }
 
@@ -46,7 +43,7 @@ const minutesRead = getReadingTime(post.body ?? "");
 
       & > .metadata-separator::before {
         content: "•";
-        color: light-dark(var(--color-dim-grey), var(--color-lilac-ash));
+        color: var(--note-color);
       }
     }
   }

@@ -1,0 +1,27 @@
+---
+import { ColorSchemeLocalStorageKey } from "./ColorSchemeSwitch.astro";
+---
+
+<Fragment>
+  <meta name="color-scheme" content="light dark" />
+  <script
+    is:inline
+    data-color-scheme-local-storage-key={ColorSchemeLocalStorageKey}
+  >
+    (function initColorScheme() {
+      const dataset = document.currentScript?.dataset;
+      const colorScheme = document.querySelector("meta[name=color-scheme]");
+      if (!dataset || !colorScheme) {
+        return;
+      }
+
+      const savedColorScheme = localStorage.getItem(
+        dataset.colorSchemeLocalStorageKey,
+      );
+      if (savedColorScheme) {
+        colorScheme.content = savedColorScheme;
+      }
+    })();
+  </script>
+</Fragment>
+
