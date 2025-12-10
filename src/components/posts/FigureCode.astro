@@ -10,4 +10,48 @@ const { caption } = Astro.props;
 
 <Figure caption={caption}>
   <slot />
+  <script>
+    (function initFigureCode() {
+      const colorSchemeMeta: HTMLMetaElement = document.querySelector(
+        "meta[name=color-scheme]",
+      )!;
+      if (!colorSchemeMeta) {
+        return;
+      }
+
+      let colorScheme = colorSchemeMeta.content;
+      if (
+        colorSchemeMeta.content !== "light" &&
+        colorSchemeMeta.content !== "dark"
+      ) {
+        if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+          colorScheme = "dark";
+        } else {
+          colorScheme = "light";
+        }
+      }
+
+      const theme = colorScheme === "dark" ? "github-dark" : "github-light";
+
+      document.addEventListener("DOMContentLoaded", () => {
+        const codeBlocks = document.querySelectorAll(
+          ".figure .expressive-code",
+        );
+
+        codeBlocks.forEach((codeBlock) => {
+          codeBlock.setAttribute("data-theme", theme);
+        });
+
+        document.addEventListener("color-scheme-change", (event) => {
+          const newTheme =
+            event.detail.colorScheme === "dark"
+              ? "github-dark"
+              : "github-light";
+          codeBlocks.forEach((codeBlock) => {
+            codeBlock.setAttribute("data-theme", newTheme);
+          });
+        });
+      });
+    })();
+  </script>
 </Figure>

@@ -36,18 +36,11 @@
 
     & a {
       color: var(--text-color);
-      text-decoration-line: underline;
-      text-decoration-thickness: 2px;
-      text-decoration-color: var(--color-muted-teal);
-      transition:
-        color 0.3s ease,
-        text-decoration-color 0.3s ease,
-        background-color 0.3s ease;
+      text-decoration: none;
+      transition: color 0.3s ease;
 
       &:hover {
-        text-decoration-color: var(--text-color);
-        color: var(--background-color);
-        background-color: var(--text-color);
+        color: var(--accent-color);
       }
     }
   }
