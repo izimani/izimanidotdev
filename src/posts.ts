@@ -25,6 +25,41 @@ export async function getSortedLivePosts(): Promise<
 export async function getGroupedLivePosts(): Promise<PostsGroupedByYear[]> {
   const posts = await getSortedLivePosts();
 
+  return groupPostsByYear(posts);
+}
+
+export async function getGroupedLivePostsInCategory(
+  category: string,
+): Promise<PostsGroupedByYear[]> {
+  const posts = await getSortedLivePosts();
+
+  const postsInCategory = posts.filter((p) =>
+    p.data.categories.includes(category),
+  );
+
+  return groupPostsByYear(postsInCategory);
+}
+
+export function postToLink(post: CollectionEntry<"posts">) {
+  return `/posts/${post.id}`;
+}
+
+export async function getPostCategories(): Promise<string[]> {
+  const posts = await getSortedLivePosts();
+
+  const categorySet = new Set<string>();
+  for (const post of posts) {
+    for (const category of post.data.categories) {
+      categorySet.add(category);
+    }
+  }
+
+  return Array.from(categorySet);
+}
+
+function groupPostsByYear(
+  posts: CollectionEntry<"posts">[],
+): PostsGroupedByYear[] {
   const postsByYear: Record<number, CollectionEntry<"posts">[]> = {};
 
   for (const post of posts) {
@@ -44,8 +79,4 @@ export async function getGroupedLivePosts(): Promise<PostsGroupedByYear[]> {
   });
 
   return groupPostList.sort((a, b) => b.year - a.year);
-}
-
-export function postToLink(post: CollectionEntry<"posts">) {
-  return `/posts/${post.id}`;
 }

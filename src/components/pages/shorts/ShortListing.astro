@@ -1,16 +1,23 @@
 ---
-import type { CollectionEntry } from "astro:content";
+import "#styles/post-content.css";
+import { type CollectionEntry, render } from "astro:content";
 import { shortToLink } from "../../../shorts";
+import Time from "#components/common/Time.astro";
 
 interface Props {
-  shorts: CollectionEntry<"shorts">[];
+  shorts: (CollectionEntry<"shorts"> & { Content?: unknown })[];
 }
 
 const { shorts } = Astro.props;
+
+for (const short of shorts) {
+  const { Content } = await render(short);
+  short.Content = Content;
+}
 ---
 
 <style>
-  :root {
+  * {
     --date-width: 150px;
     --date-color: var(--note-color);
 
@@ -40,9 +47,29 @@ const { shorts } = Astro.props;
     }
   }
 
+  .short-metadata {
+    display: flex;
+    flex-flow: column wrap;
+    align-items: end;
+    min-width: var(--date-width);
+    line-height: 1;
+    gap: 0.2rem;
+
+    @media (max-width: 768px) {
+      min-width: auto;
+      width: 100%;
+      flex-flow: row wrap;
+      gap: 0.5rem;
+
+      & > .short-metadata-separator::before {
+        content: "•";
+        color: var(--note-color);
+      }
+    }
+  }
+
   .short-link {
     display: block;
-    width: var(--date-width);
     color: var(--date-color);
     text-decoration: none;
     font-weight: 300;
@@ -57,6 +84,7 @@ const { shorts } = Astro.props;
     font-weight: 600;
     color: var(--title-color);
     line-height: 1;
+    margin-bottom: 0.5rem;
   }
 
   .short-content {
@@ -66,13 +94,16 @@ const { shorts } = Astro.props;
     @media (max-width: 768px) {
       grid-column: 1 / 2;
     }
+  }
 
-    & > :global(*:not(:last-child)) {
-      margin-bottom: 1rem;
-    }
+  .short-categories {
+    display: flex;
+    flex-flow: row wrap;
+    gap: 0.5ch;
 
-    & > :global(p) {
-      line-height: 1.7;
+    & > *:not(:last-child)::after {
+      content: ",";
+      color: var(--note-color);
     }
   }
 </style>
@@ -80,14 +111,27 @@ const { shorts } = Astro.props;
   {
     shorts.map((short) => (
       <article class="short">
-        <a href={shortToLink(short)} class="short-link">
-          <time datetime={short.data.date.toISOString()} class="short-date">
-            {short.data.date.toLocaleDateString()}
-          </time>
-        </a>
-        <h2 class="short-title">{short.data.title}</h2>
+        <div class="short-metadata">
+          <a href={shortToLink(short)} class="short-link">
+            <Time date={short.data.date} />
+          </a>
+          <span class="short-metadata-separator" />
+          <div class="short-categories">
+            {short.data.categories.map((c) => (
+              <a
+                href={`/shorts/categories/${c}`}
+                class="short-category short-link"
+              >
+                {c}
+              </a>
+            ))}
+          </div>
+        </div>
         <div class="short-content">
-          <p>{short.body}</p>
+          <h2 class="short-title">{short.data.title}</h2>
+          <div class="content">
+            <short.Content />
+          </div>
         </div>
       </article>
     ))

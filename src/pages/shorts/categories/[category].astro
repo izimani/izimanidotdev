@@ -1,0 +1,39 @@
+---
+import SubpageLayout from "#layouts/SubpageLayout.astro";
+import {
+  getSortedLiveShortsInCategory,
+  getShortCategories,
+} from "../../../shorts";
+import ShortListing from "#components/pages/shorts/ShortListing.astro";
+import type { CollectionEntry } from "astro:content";
+
+export async function getStaticPaths() {
+  const categories = await getShortCategories();
+
+  const pages = [];
+
+  for (const category of categories) {
+    const shorts = await getSortedLiveShortsInCategory(category);
+    pages.push({
+      params: { category },
+      props: { category, shorts },
+    });
+  }
+
+  return pages;
+}
+
+interface Props {
+  category: string;
+  shorts: CollectionEntry<"shorts">[];
+}
+
+const { category, shorts } = Astro.props;
+---
+
+<SubpageLayout
+  title={`Shorts in ${category}`}
+  description={`Feed of short and not-so-short but definitely unstructured thoughts about ${category}.`}
+>
+  <ShortListing shorts={shorts} />
+</SubpageLayout>

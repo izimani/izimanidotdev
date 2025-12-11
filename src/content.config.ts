@@ -10,6 +10,7 @@ const shorts = defineCollection({
     title: z.string().optional(),
     date: z.coerce.date(),
     live: z.boolean().default(false),
+    categories: z.array(z.string()).default([]),
   }),
 });
 
@@ -24,6 +25,7 @@ const posts = defineCollection({
     excerpt: z.string(),
     updated: z.coerce.date().optional(),
     live: z.boolean().default(false),
+    categories: z.array(z.string()).default([]),
   }),
 });
 

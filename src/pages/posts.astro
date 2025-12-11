@@ -1,6 +1,7 @@
 ---
 import SubpageLayout from "#layouts/SubpageLayout.astro";
-import { getGroupedLivePosts, postToLink } from "../posts";
+import { getGroupedLivePosts } from "../posts";
+import PostListing from "#components/posts/PostListing.astro";
 
 const posts = await getGroupedLivePosts();
 ---
@@ -9,94 +10,5 @@ const posts = await getGroupedLivePosts();
   title="Posts"
   description="Articles, guides, and other writings, (mostly) about software engineering."
 >
-  <style>
-    :root {
-      --year-width: 150px;
-      --year-color: var(--note-color);
-
-      --content-width: 800px;
-      --post-color: var(--text-color);
-      --post-title-color: var(--accent-color);
-    }
-
-    .post-listing {
-      margin-left: calc(50% - (var(--content-width) / 2 + var(--year-width)));
-      max-width: calc(var(--content-width) + var(--year-width));
-      display: grid;
-      grid-template-columns: var(--year-width) 1fr;
-      gap: 1rem;
-
-      @media (max-width: 768px) {
-        margin: 0 auto;
-        max-width: 100%;
-        grid-template-columns: 1fr;
-        gap: 0.5rem;
-      }
-    }
-
-    .year-posts {
-      @media (max-width: 768px) {
-        padding-bottom: 2.5rem;
-      }
-    }
-
-    .year-title {
-      font-size: 2rem;
-      font-weight: 600;
-      font-family: var(--font-vollkorn);
-      color: var(--year-color);
-
-      position: sticky;
-      top: 10px;
-    }
-
-    .post {
-      font-family: var(--flow-font);
-      color: var(--post-color);
-    }
-
-    .post-title {
-      font-size: 1.5rem;
-      font-weight: 600;
-
-      & > a {
-        color: var(--post-title-color);
-        text-decoration: none;
-        transition: color 0.3s ease;
-
-        &:hover {
-          text-decoration: underline;
-        }
-      }
-    }
-
-    .post-excerpt {
-      line-height: 1.7;
-    }
-
-    .post:not(:last-child) {
-      margin-bottom: 1.5rem;
-    }
-  </style>
-  <div class="post-listing">
-    {
-      posts.map(({ year, posts }) => (
-        <Fragment>
-          <div>
-            <h2 class="year-title">{year}</h2>
-          </div>
-          <div class="year-posts">
-            {posts.map((post) => (
-              <article class="post">
-                <h3 class="post-title">
-                  <a href={postToLink(post)}>{post.data.title}</a>
-                </h3>
-                <p class="post-excerpt">{post.data.excerpt}</p>
-              </article>
-            ))}
-          </div>
-        </Fragment>
-      ))
-    }
-  </div>
+  <PostListing posts={posts} />
 </SubpageLayout>

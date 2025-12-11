@@ -1,0 +1,39 @@
+---
+import SubpageLayout from "#layouts/SubpageLayout.astro";
+import {
+  getGroupedLivePostsInCategory,
+  getPostCategories,
+  type PostsGroupedByYear,
+} from "../../../posts";
+import PostListing from "#components/posts/PostListing.astro";
+
+export async function getStaticPaths() {
+  const categories = await getPostCategories();
+
+  const pages = [];
+
+  for (const category of categories) {
+    const posts = await getGroupedLivePostsInCategory(category);
+    pages.push({
+      params: { category },
+      props: { category, posts },
+    });
+  }
+
+  return pages;
+}
+
+interface Props {
+  category: string;
+  posts: PostsGroupedByYear[];
+}
+
+const { category, posts } = Astro.props;
+---
+
+<SubpageLayout
+  title={`Posts in ${category}`}
+  description={`Articles, guides, and other writings, (mostly) about ${category}.`}
+>
+  <PostListing posts={posts} />
+</SubpageLayout>

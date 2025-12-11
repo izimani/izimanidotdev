@@ -7,9 +7,19 @@ interface Props {
   post: CollectionEntry<"posts">;
 }
 
+type Category = {
+  name: string;
+  link: string;
+};
+
 const { post } = Astro.props;
 
 const minutesRead = getReadingTime(post.body ?? "");
+
+const categories: Category[] = post.data.categories.map((c) => ({
+  name: c,
+  link: `/posts/categories/${c}`,
+}));
 ---
 
 <style>
@@ -47,6 +57,17 @@ const minutesRead = getReadingTime(post.body ?? "");
       }
     }
   }
+
+  .categories {
+    display: flex;
+    flex-flow: row wrap;
+    gap: 0.5ch;
+
+    & > *:not(:last-child)::after {
+      content: ",";
+      color: var(--note-color);
+    }
+  }
 </style>
 <aside class="metadata">
   <span>
@@ -67,4 +88,8 @@ const minutesRead = getReadingTime(post.body ?? "");
   </span>
   <span class="metadata-separator"></span>
   {minutesRead && <span>{minutesRead} mins to read</span>}
+  <span class="metadata-separator"></span>
+  <span class="categories">
+    {categories.map((c) => <a href={c.link}>{c.name}</a>)}
+  </span>
 </aside>
