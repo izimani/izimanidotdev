@@ -11,7 +11,9 @@
   "imports": {
     "#components/*": "./src/components/*",
     "#layouts/*": "./src/layouts/*",
-    "#styles/*": "./src/styles/*"
+    "#styles/*": "./src/styles/*",
+    "#posts": "./src/content/management/posts.ts",
+    "#shorts": "./src/content/management/shorts.ts"
   },
   "dependencies": {
     "@astrojs/markdoc": "^0.15.9",
