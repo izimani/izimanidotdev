@@ -76,7 +76,10 @@ export const ColorSchemeLocalStorageKey = "color-scheme";
     ))
   }
 </section>
-<script data-color-scheme-local-storage-key={ColorSchemeLocalStorageKey}>
+<script
+  is:inline
+  data-color-scheme-local-storage-key={ColorSchemeLocalStorageKey}
+>
   (function initColorSchemeSwitch() {
     const dataset = document.currentScript?.dataset;
     if (!dataset) {

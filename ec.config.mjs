@@ -1,9 +1,10 @@
 import { defineEcConfig } from "astro-expressive-code";
 import { pluginCollapsibleSections } from "@expressive-code/plugin-collapsible-sections";
 import { pluginLineNumbers } from "@expressive-code/plugin-line-numbers";
+import { LIGHT_CODE_THEME, DARK_CODE_THEME } from "./src/util/color-scheme.mjs";
 
 export default defineEcConfig({
-  themes: ["github-light", "github-dark"],
+  themes: [LIGHT_CODE_THEME, DARK_CODE_THEME],
 
   defaultProps: {
     wrap: true,

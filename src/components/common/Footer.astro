@@ -1,3 +1,7 @@
+---
+import { PAGES_LIST, PAGES } from "../../structure";
+---
+
 <style>
   .footer {
     padding: 2rem 0;
@@ -9,7 +13,7 @@
     display: flex;
     flex-flow: column nowrap;
     align-items: center;
-    gap: 1rem;
+    gap: 0.5rem;
   }
 
   .footer-title {
@@ -57,14 +61,10 @@
 <footer class="footer">
   <div class="footer-wrapper">
     <div class="footer-title">
-      <a href="/">Izimani</a>
+      <a href={PAGES.HOME.href}>Izimani</a>
     </div>
     <nav class="footer-nav">
-      <a href="/">home</a>
-      <a href="/shorts">shorts</a>
-      <a href="/posts">posts</a>
-      <a href="/story">story</a>
-      <a href="/contact">contact</a>
+      {PAGES_LIST.map((page) => <a href={page.href}>{page.navTitle}</a>)}
     </nav>
     <p class="footer-note">
       Unless noted otherwise, all content was made by a human.

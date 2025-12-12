@@ -2,6 +2,7 @@
 import DecorationBar from "./DecorationBar.astro";
 import Nav from "./Nav.astro";
 import ColorSchemeSwitch from "./ColorSchemeSwitch.astro";
+import { PAGES } from "../../structure";
 
 export enum HeaderVariant {
   Home = "home",
@@ -87,7 +88,7 @@ const { variant, title, description } = Astro.props;
       ]}
     >
       <h1 class="main">
-        <a href="/">Izimani</a>{
+        <a href={PAGES.HOME.href}>Izimani</a>{
           title && (
             <span style="color: var(--sub-title-color);"> | {title}</span>
           )

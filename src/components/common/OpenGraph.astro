@@ -1,14 +1,7 @@
 ---
-function getPageByUrl(url: string) {
-  return {
-    title: "Izimani Dot Dev " + url,
-    description: "Izimani Dot Dev",
-    absoluteImageUrl: (site: string) =>
-      new URL("/og-image.png", site).toString(),
-    absoluteUrl: (site: string) => new URL("/", site).toString(),
-    kind: "website",
-  };
-}
+import { getPageByUrl } from "../../open-graph";
+
+console.log(Astro.url.pathname);
 
 const openGraphPage = getPageByUrl(Astro.url.pathname);
 ---

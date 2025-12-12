@@ -12,6 +12,7 @@
     "#components/*": "./src/components/*",
     "#layouts/*": "./src/layouts/*",
     "#styles/*": "./src/styles/*",
+    "#util/*": "./src/util/*",
     "#posts": "./src/content/management/posts.ts",
     "#shorts": "./src/content/management/shorts.ts"
   },

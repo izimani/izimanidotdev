@@ -7,6 +7,7 @@ import { getSortedLivePosts } from "#posts";
 import { render, type CollectionEntry } from "astro:content";
 import Metadata from "#components/posts/Metadata.astro";
 import ColorSchemeSwitch from "#components/common/ColorSchemeSwitch.astro";
+import { PAGES } from "../../structure";
 
 export async function getStaticPaths() {
   function postToPath(post: CollectionEntry<"posts">) {
@@ -160,7 +161,7 @@ const { Content } = await render(post);
 <BaseLayout title={post.data.title} description={post.data.excerpt}>
   <nav class="nav to-center">
     <div class="nav-wrapper">
-      <a class="all-posts-link" href="/posts">All posts on izimani</a>
+      <a class="all-posts-link" href={PAGES.POSTS.href}>All posts on izimani</a>
       <div class="color-scheme-switch-wrapper">
         <ColorSchemeSwitch />
       </div>

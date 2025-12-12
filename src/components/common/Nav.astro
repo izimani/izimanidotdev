@@ -1,31 +1,5 @@
 ---
-type NavigationItem = {
-  title: string;
-  href: string;
-};
-
-const navigation: NavigationItem[] = [
-  {
-    title: "home",
-    href: "/",
-  },
-  {
-    title: "shorts",
-    href: "/shorts",
-  },
-  {
-    title: "posts",
-    href: "/posts",
-  },
-  {
-    title: "story",
-    href: "/story",
-  },
-  {
-    title: "contact",
-    href: "/contact",
-  },
-];
+import { PAGES_LIST } from "../../structure";
 ---
 
 <nav class="nav">
@@ -57,5 +31,5 @@ const navigation: NavigationItem[] = [
     }
   </style>
 
-  {navigation.map((item) => <a href={item.href}>{item.title}</a>)}
+  {PAGES_LIST.map((page) => <a href={page.href}>{page.navTitle}</a>)}
 </nav>
