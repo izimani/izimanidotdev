@@ -1,0 +1,99 @@
+---
+import "#styles/post-content.css";
+
+import { type CollectionEntry, render } from "astro:content";
+import Assets from "#util/assets.ts";
+import { Picture } from "astro:assets";
+
+interface Props {
+  project: CollectionEntry<"highlightedProjects">;
+}
+
+const { project } = Astro.props;
+
+const { Content } = await render(project);
+---
+
+<style>
+  * {
+    --image-width: 150px;
+
+    --title-color: var(--accent-color);
+    --title-font-size: 1.25rem;
+    --title-font-weight: 600;
+    --title-font-family: var(--font-vollkorn);
+  }
+
+  .highlight {
+    display: grid;
+    grid-template-columns: var(--image-width) 1fr;
+    gap: 1rem;
+
+    @media (max-width: 768px) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .highlight-image img {
+    width: var(--image-width);
+    height: auto;
+    object-fit: cover;
+    border-radius: 0.5rem;
+  }
+
+  .highlight-title {
+    font-size: var(--title-font-size);
+    font-weight: var(--title-font-weight);
+    font-family: var(--title-font-family);
+    color: var(--title-color);
+  }
+
+  .highlight-link {
+    margin-top: 1.5rem;
+
+    & > a {
+      font-family: var(--flow-font);
+      color: var(--text-color);
+      text-decoration-line: underline;
+      text-decoration-thickness: 2px;
+      text-decoration-color: var(--color-muted-teal);
+      transition:
+        color 0.3s ease,
+        text-decoration-color 0.3s ease,
+        background-color 0.3s ease;
+
+      &:hover {
+        text-decoration-color: var(--text-color);
+        color: var(--background-color);
+        background-color: var(--text-color);
+      }
+    }
+  }
+</style>
+<article class="highlight">
+  <div class="highlight-image">
+    <Picture
+      src={Assets.getImage(project.data.image)}
+      alt={project.data.title}
+    />
+  </div>
+  <div class="highlight-details">
+    <h3 class="highlight-title">
+      {project.data.title}
+    </h3>
+    <div class="highlight-content">
+      <div class="content">
+        <Content />
+      </div>
+      {
+        project.data.link && (
+          <div class="highlight-link">
+            <a href={project.data.link} target="_blank">
+              {project.data.cta}
+            </a>
+          </div>
+        )
+      }
+    </div>
+  </div>
+</article>

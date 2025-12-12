@@ -1,7 +1,29 @@
 ## Ahoy, I'm Attila! 👋
 
-Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus omnis nulla iusto laborum repudiandae laboriosam dicta minus obcaecati natus molestiae quidem ad fuga sequi odio nesciunt, atque distinctio unde ea!
-Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus omnis nulla iusto laborum repudiandae laboriosam dicta minus obcaecati natus molestiae quidem ad fuga sequi odio nesciunt, atque distinctio unde ea!
+I love to write code, solve problems (mainly with code), and go on and on and on about—you guessed it!— code! And software engineering, in general.
 
-Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus omnis nulla iusto laborum repudiandae laboriosam dicta minus obcaecati natus molestiae quidem ad fuga sequi odio nesciunt, atque distinctio unde ea!
-Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus omnis nulla iusto laborum repudiandae laboriosam dicta minus obcaecati natus molestiae quidem ad fuga sequi odio nesciunt, atque distinctio unde ea!
+On this site, you’ll find
+
+- [shorts](/shorts), my private feed of ideas, thoughts, realizations in an “I just _have to_ tell you this” style,
+- [posts](/posts) that follow the traditional blog article format,
+- [projects](/projects) that I worked on,
+- the [story](/story) of how I got into this software thingy.
+
+I would love to hear from you! Please head over to [contact](/contact) to get in touch.
+
+You might be interested—especially, if you’re a recruiter or something—in a more formal, CV-like introduction below.
+
+### Work
+
+I've worked at
+
+- [Sustainabot](https://www.getsustainabot.com/), an AI-powered assistant for green building. I co-founded the company and built 99% of the application.
+- [Qogita](https://www.qogita.com/), a health and beauty wholesale marketplace. I wrote tons of backend code to help sellers upload their catalogs and ship their products.
+- NLV8 and Perfinal, core banking platform suppliers for neobanks. I took part in the TS-to-Java rewrite of the platform.
+- [EPAM](https://www.epam.com) in collaboration with [Hotels.com](http://hotels.com/), one of the largest hotel booking sites. The beginning of my professional career with Java and Spring.
+
+### Education and Teaching
+
+- I earned my master’s degree in computer science from the University of Debrecen with distinction.
+- I have a PhD in reversible computing.
+- I’m a contract lecturer at the University of Debrecen.

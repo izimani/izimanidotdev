@@ -2,14 +2,14 @@
 
 :root {
   --font-size: 22px;
-  --color-paper-beige: #f3eed9;
+  --color-paper-beige: rgb(243, 238, 217);
   --color-deep-emerald: #0f5e3b;
   --color-white-smoke: #f7f4f3;
-  --color-charcoal: #2e2e2e;
+  --color-charcoal: rgb(46, 46, 46);
   --color-tiger-flame: #f46036;
   --color-muted-teal: #7ca982;
-  --color-dim-grey: #776871;
-  --color-lilac-ash: #aa9da4;
+  --color-dim-grey: rgb(119, 104, 113);
+  --color-lilac-ash: rgb(170, 157, 164);
   --color-pale-slate: #bdb3b8;
   --font-ibm-plex-mono: "IBM Plex Mono", monospace;
   --font-vollkorn: "Vollkorn Variable", serif;

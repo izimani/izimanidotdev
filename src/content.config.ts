@@ -29,7 +29,22 @@ const posts = defineCollection({
   }),
 });
 
+const highlightedProjects = defineCollection({
+  loader: glob({
+    pattern: "*.md",
+    base: "src/content/projects/highlighted",
+  }),
+  schema: z.object({
+    title: z.string(),
+    link: z.string().optional(),
+    cta: z.string().default("read more"),
+    image: z.string(),
+    order: z.number(),
+  }),
+});
+
 export const collections = {
   shorts,
   posts,
+  highlightedProjects,
 };

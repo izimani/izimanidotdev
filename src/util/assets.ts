@@ -6,7 +6,6 @@ const images = import.meta.glob<{ default: ImageMetadata }>(
 
 const Assets = {
   async getImage(relativePath: string) {
-    console.log(images);
     return (await images["/src/assets/images/" + relativePath])();
   },
 };

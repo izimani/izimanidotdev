@@ -64,7 +64,6 @@ function groupPostsByYear(
 
   for (const post of posts) {
     const year = post.data.date.getFullYear();
-    console.log(year);
     if (!postsByYear[year]) {
       postsByYear[year] = [];
     }

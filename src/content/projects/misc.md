@@ -1,0 +1,6 @@
+- [Chalupa](https://github.com/chalupajs/chalupa/blob/master/docs/README.md) is a TypeScript microservice framework with built-in support for configuration, dependency injection, and type-safe service calls.
+- [Codeosseum](https://github.com/codeosseum) is a GraalVM-based PvP (player-versus-player) competitive software engineering platform focused on testing rather than development.
+- [CryptID](https://github.com/cryptid-org/getting-started/blob/master/README.md) is a cross-platform, WebAssembly-driven solution for identity-based and attribute-based cryptography.
+- [Downson](https://github.com/downson-lang/downson/blob/master/README.md) (from Markdown Object Notation) embeds typed, structured data into Markdown documents.
+- [jield](https://github.com/battila7/jield/tree/master) provides generator functions in Java via annotation processing and CPS (continuation-passing style) transformation.
+- [mvnx](https://github.com/mvnx/mvnx/blob/master/README.md) is like npx but for maven repositories.

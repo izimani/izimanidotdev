@@ -9,12 +9,14 @@
     "astro": "astro"
   },
   "imports": {
+    "#content/*": "./src/content/*",
     "#components/*": "./src/components/*",
     "#layouts/*": "./src/layouts/*",
     "#styles/*": "./src/styles/*",
     "#util/*": "./src/util/*",
     "#posts": "./src/content/management/posts.ts",
-    "#shorts": "./src/content/management/shorts.ts"
+    "#shorts": "./src/content/management/shorts.ts",
+    "#projects": "./src/content/management/projects.ts"
   },
   "dependencies": {
     "@astrojs/markdoc": "^0.15.9",

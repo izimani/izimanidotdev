@@ -1,0 +1,65 @@
+---
+import { getHighlightedProjects } from "#projects";
+import Highlight from "./Highlight.astro";
+
+const projects = await getHighlightedProjects();
+---
+
+<style>
+  * {
+    --content-width: 800px;
+  }
+
+  .highlights {
+    max-width: var(--content-width);
+    margin: 0 auto;
+  }
+
+  .highlights-header {
+    padding-bottom: 0.5rem;
+    & h2 {
+      font-size: 1.5rem;
+      font-weight: 600;
+      font-family: var(--font-vollkorn);
+      color: var(--accent-color);
+      line-height: 1;
+    }
+
+    & p {
+      font-size: 1rem;
+      font-weight: 300;
+      font-family: var(--flow-font);
+    }
+  }
+
+  .highlights-list {
+    display: flex;
+    flex-direction: column;
+    padding-top: 1rem;
+
+    & .highlight-container:not(:last-child)::after {
+      content: "";
+      display: block;
+      width: 90%;
+      height: 1px;
+      background-color: var(--note-color);
+      opacity: 0.2;
+      margin: 1rem auto;
+    }
+  }
+</style>
+<section class="highlights">
+  <hgroup class="highlights-header">
+    <h2>Highlights</h2>
+    <p>The stuff I'm most proud of.</p>
+  </hgroup>
+  <div class="highlights-list">
+    {
+      projects.map((project) => (
+        <div class="highlight-container">
+          <Highlight project={project} />
+        </div>
+      ))
+    }
+  </div>
+</section>
