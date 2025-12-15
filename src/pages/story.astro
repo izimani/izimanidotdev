@@ -1,5 +1,16 @@
 ---
+import "#styles/post-content.css";
+
+import { type CollectionEntry, getEntry, render } from "astro:content";
 import SubpageLayout from "#layouts/SubpageLayout.astro";
+
+const story = await getEntry("story", "story");
+
+const { Content } = await render(story as CollectionEntry<"story">);
 ---
 
-<SubpageLayout title="Story" description="Desc" />
+<SubpageLayout title="Story" description="How I got into this software thingy.">
+  <div class="content">
+    <Content />
+  </div>
+</SubpageLayout>

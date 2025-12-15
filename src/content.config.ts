@@ -1,6 +1,13 @@
 import { defineCollection, z } from "astro:content";
 import { glob } from "astro/loaders";
 
+const story = defineCollection({
+  loader: glob({
+    pattern: "*.mdoc",
+    base: "src/content/story",
+  }),
+});
+
 const shorts = defineCollection({
   loader: glob({
     pattern: "*.md",
@@ -47,4 +54,5 @@ export const collections = {
   shorts,
   posts,
   highlightedProjects,
+  story,
 };

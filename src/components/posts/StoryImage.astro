@@ -1,0 +1,69 @@
+---
+import { Picture } from "astro:assets";
+import Assets from "../../util/assets";
+
+interface Props {
+  src: string;
+  attribution: string;
+  link?: string;
+}
+
+const { src, attribution, link = "" } = Astro.props;
+---
+
+<style>
+  .image-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+
+  .image-container picture {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  .image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    color: transparent;
+    display: block;
+  }
+
+  .image-caption {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    z-index: 11;
+  }
+
+  .image-caption a {
+    font-family: var(--font-vollkorn);
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: whitesmoke;
+    text-decoration: none;
+    background-color: var(--text-color);
+    padding: 0 5px;
+
+    &::before {
+      content: "image from ";
+    }
+  }
+</style>
+<figure class="image-container">
+  <Picture src={Assets.getStoryImage(src)} alt={attribution} />
+  <figcaption class="image-caption">
+    {
+      link && (
+        <a href={link} target="_blank">
+          {attribution}
+        </a>
+      )
+    }
+    {!link && <span>{attribution}</span>}
+  </figcaption>
+</figure>

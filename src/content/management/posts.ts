@@ -1,5 +1,15 @@
 import { getCollection, type CollectionEntry } from "astro:content";
 
+let currentlyRenderedPost: CollectionEntry<"posts"> | null = null;
+
+export function setCurrentlyRenderedPost(post: CollectionEntry<"posts">) {
+  currentlyRenderedPost = post;
+}
+
+export function getCurrentlyRenderedPost() {
+  return currentlyRenderedPost;
+}
+
 export type PostsGroupedByYear = {
   year: number;
   posts: CollectionEntry<"posts">[];

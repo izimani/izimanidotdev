@@ -2,6 +2,8 @@
 import { Picture } from "astro:assets";
 import Assets from "../../util/assets";
 import Figure from "./Figure.astro";
+import type { CollectionEntry } from "astro:content";
+import { getCurrentlyRenderedPost } from "#posts";
 
 interface Props {
   src: string;
@@ -10,6 +12,7 @@ interface Props {
 }
 
 const { src, alt, caption } = Astro.props;
+const post = getCurrentlyRenderedPost() as CollectionEntry<"posts">;
 ---
 
 <style>
@@ -20,5 +23,5 @@ const { src, alt, caption } = Astro.props;
   }
 </style>
 <Figure caption={caption || alt}>
-  <Picture class="image" src={Assets.getImage(src)} alt={alt} />
+  <Picture class="image" src={Assets.getPostImage(post, src)} alt={alt} />
 </Figure>

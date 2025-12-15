@@ -1,0 +1,18 @@
+---
+import "#styles/post-content.css";
+---
+
+<style>
+  * {
+    --content-width: 800px;
+  }
+
+  .narrow-box {
+    max-width: var(--content-width);
+    margin: 0 auto;
+    padding: 1rem 0;
+  }
+</style>
+<div class="narrow-box content">
+  <slot />
+</div>

@@ -59,5 +59,23 @@ export default defineMarkdocConfig({
         who: { type: "String", required: false },
       },
     },
+    storyImageScroller: {
+      render: component("./src/components/posts/StoryImageScroller.astro"),
+      attributes: {
+        title: { type: "String" },
+      },
+    },
+    storyImage: {
+      render: component("./src/components/posts/StoryImage.astro"),
+      attributes: {
+        src: { type: "String" },
+        attribution: { type: "String" },
+        link: { type: "String", required: false },
+      },
+    },
+    narrowBox: {
+      render: component("./src/components/posts/NarrowBox.astro"),
+      attributes: {},
+    },
   },
 });

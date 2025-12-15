@@ -37,16 +37,6 @@ import { PAGES_LIST, PAGES } from "../../structure";
     gap: 0.6rem;
     font-family: var(--flow-font);
     color: var(--text-color);
-
-    & a {
-      color: var(--text-color);
-      text-decoration: none;
-      transition: color 0.3s ease;
-
-      &:hover {
-        color: var(--accent-color);
-      }
-    }
   }
 
   .footer-note {
@@ -56,6 +46,16 @@ import { PAGES_LIST, PAGES } from "../../structure";
     color: var(--note-color);
     line-height: 1.5;
     text-wrap: balance;
+  }
+
+  :is(.footer-nav, .footer-note) a {
+    color: var(--text-color);
+    text-decoration: none;
+    transition: color 0.3s ease;
+
+    &:hover {
+      color: var(--accent-color);
+    }
   }
 </style>
 <footer class="footer">
@@ -68,6 +68,11 @@ import { PAGES_LIST, PAGES } from "../../structure";
     </nav>
     <p class="footer-note">
       Unless noted otherwise, all content was made by a human.
+    </p>
+    <p class="footer-note">
+      You can find the source code for this site on <a
+        href="https://github.com/izimani/izimanidotdev">GitHub</a
+      >.
     </p>
   </div>
 </footer>
