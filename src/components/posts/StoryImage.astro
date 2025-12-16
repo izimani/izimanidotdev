@@ -52,6 +52,10 @@ const { src, attribution, link = "" } = Astro.props;
     &::before {
       content: "image from ";
     }
+
+    @media (max-width: 768px) {
+      font-size: 0.5rem;
+    }
   }
 </style>
 <figure class="image-container">
