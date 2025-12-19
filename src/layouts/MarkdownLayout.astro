@@ -1,0 +1,33 @@
+---
+import type { MarkdownLayoutProps } from "astro";
+
+import "#styles/post-content.css";
+
+import SubpageLayout from "#layouts/SubpageLayout.astro";
+
+type Props = MarkdownLayoutProps<{
+  title: string;
+  description: string;
+}>;
+
+const { frontmatter } = Astro.props;
+const { title, description } = frontmatter;
+---
+
+<style>
+  * {
+    --content-width: 800px;
+  }
+
+  .markdown-container {
+    max-width: var(--content-width);
+    margin: 0 auto;
+  }
+</style>
+<SubpageLayout title={title} description={description}>
+  <div class="markdown-container">
+    <div class="content">
+      <slot />
+    </div>
+  </div>
+</SubpageLayout>
