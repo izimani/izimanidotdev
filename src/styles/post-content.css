@@ -55,4 +55,10 @@
       color: var(--background-color);
     }
   }
+
+  & .metadata {
+    @media (min-width: 768px) {
+      margin: 0;
+    }
+  }
 }
