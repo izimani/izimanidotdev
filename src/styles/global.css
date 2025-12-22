@@ -1,7 +1,7 @@
 @import "reset.css";
 
 :root {
-  --font-size: 22px;
+  --font-size: 21px;
   --color-paper-beige: rgb(243, 238, 217);
   --color-deep-emerald: #0f5e3b;
   --color-white-smoke: #f7f4f3;
@@ -11,13 +11,14 @@
   --color-dim-grey: rgb(119, 104, 113);
   --color-lilac-ash: rgb(170, 157, 164);
   --color-pale-slate: #bdb3b8;
-  --font-ibm-plex-mono: "IBM Plex Mono", monospace;
   --font-vollkorn: "Vollkorn Variable", serif;
+  --font-ibm-plex-mono: "IBM Plex Mono", monospace;
   --font-ibm-plex-serif: "IBM Plex Serif", serif;
+  --font-ibm-plex-sans: "IBM Plex Sans", sans-serif;
 }
 
 :root {
-  --flow-font: var(--font-ibm-plex-serif);
+  --flow-font: var(--font-ibm-plex-sans);
   --background-color: light-dark(
     var(--color-white-smoke),
     var(--color-charcoal)

@@ -23,6 +23,7 @@
     "@astrojs/sitemap": "3.6.0",
     "@expressive-code/plugin-collapsible-sections": "0.41.3",
     "@expressive-code/plugin-line-numbers": "0.41.3",
+    "@fontsource-variable/ibm-plex-sans": "5.2.8",
     "@fontsource-variable/vollkorn": "5.2.10",
     "@fontsource/ibm-plex-mono": "5.2.7",
     "@fontsource/ibm-plex-serif": "5.2.7",

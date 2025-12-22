@@ -44,6 +44,10 @@
     margin-bottom: 0.5rem;
   }
 
+  & em {
+    font-style: italic;
+  }
+
   & :is(h1, h2, h3, h4, h5, h6) {
     color: var(--accent-color);
     font-family: var(--font-vollkorn);
