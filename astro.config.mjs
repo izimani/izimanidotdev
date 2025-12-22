@@ -37,6 +37,10 @@ export default defineConfig({
     expressiveCode(),
   ],
 
+  build: {
+    inlineStylesheets: "always",
+  },
+
   vite: {
     plugins: [],
   },
