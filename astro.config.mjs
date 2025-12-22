@@ -2,7 +2,6 @@
 import { defineConfig } from "astro/config";
 
 import sitemap from "@astrojs/sitemap";
-import playformCompress from "@playform/compress";
 import markdoc from "@astrojs/markdoc";
 import expressiveCode from "astro-expressive-code";
 
@@ -21,7 +20,11 @@ function getSiteUrl() {
 // https://astro.build/config
 export default defineConfig({
   integrations: [
-    playformCompress(),
+    (await import("@playform/compress")).default({
+      CSS: false,
+      HTML: false,
+      JavaScript: false,
+    }),
     sitemap({
       i18n: {
         defaultLocale: "en",
