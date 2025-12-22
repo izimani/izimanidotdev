@@ -20,10 +20,10 @@ const openGraphPage = getPageByUrl(Astro.url.pathname);
         content={openGraphPage.absoluteUrl(Astro.site!)}
       />
       <meta property="og:type" content={openGraphPage.kind} />
-      <meta property="og:site_name" content="TODO" />
+      <meta property="og:site_name" content="Izimani" />
       <meta
         property="og:logo"
-        content={new URL("/TODO", Astro.site!).toString()}
+        content={new URL("/logo.png", Astro.site!).toString()}
       />
     </Fragment>
   )
