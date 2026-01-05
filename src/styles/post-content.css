@@ -61,7 +61,7 @@
   }
 
   & .metadata {
-    @media (min-width: 768px) {
+    @media (min-width: 1300px) {
       margin: 0;
     }
   }
