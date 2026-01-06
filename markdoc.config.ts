@@ -68,6 +68,14 @@ export default defineMarkdocConfig({
         who: { type: "String", required: false },
       },
     },
+    shortquote: {
+      render: component("./src/components/posts/ShortQuote.astro"),
+      attributes: {
+        sourceUrl: { type: "String", required: false },
+        source: { type: "String", required: false },
+        who: { type: "String", required: false },
+      },
+    },
     storyImageScroller: {
       render: component("./src/components/posts/StoryImageScroller.astro"),
       attributes: {

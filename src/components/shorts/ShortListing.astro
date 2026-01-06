@@ -57,6 +57,7 @@ for (const short of shorts) {
     min-width: var(--date-width);
     line-height: 1;
     gap: 0.2rem;
+    margin-top: 0.25rem;
 
     @media (max-width: 1100px) {
       min-width: auto;
@@ -73,6 +74,7 @@ for (const short of shorts) {
 
   .short-date {
     color: var(--date-color);
+    font-weight: 300;
   }
 
   .short-link {
@@ -142,7 +144,7 @@ for (const short of shorts) {
           </a>
         </div>
         <div class="short-content">
-          <h2 class="short-title">{short.data.title}</h2>
+          {short.data.title && <h2 class="short-title">{short.data.title}</h2>}
           <div class="content">
             <short.Content />
           </div>
