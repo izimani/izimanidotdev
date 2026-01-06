@@ -3,7 +3,11 @@ import "#styles/post-content.css";
 
 import BaseLayout from "#layouts/BaseLayout.astro";
 import Header, { HeaderVariant } from "#components/common/Header.astro";
-import Content from "#content/index.md";
+import { type CollectionEntry, getEntry, render } from "astro:content";
+
+const index = await getEntry("index", "index");
+
+const { Content } = await render(index as CollectionEntry<"index">);
 ---
 
 <BaseLayout

@@ -8,6 +8,13 @@ const story = defineCollection({
   }),
 });
 
+const index = defineCollection({
+  loader: glob({
+    pattern: "*.mdoc",
+    base: "src/content/index",
+  }),
+});
+
 const shorts = defineCollection({
   loader: glob({
     pattern: "*.md",
@@ -55,4 +62,5 @@ export const collections = {
   posts,
   highlightedProjects,
   story,
+  index,
 };

@@ -33,6 +33,15 @@ export default defineMarkdocConfig({
     },
   },
   tags: {
+    image: {
+      render: component("./src/components/common/MarkdocImage.astro"),
+      attributes: {
+        src: { type: "String", required: true },
+        alt: { type: "String", required: true },
+        width: { type: "Number", required: false },
+        height: { type: "Number", required: false },
+      },
+    },
     aside: {
       render: component("./src/components/posts/Aside.astro"),
       attributes: {},
