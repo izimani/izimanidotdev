@@ -3,6 +3,7 @@ import SubpageLayout from "#layouts/SubpageLayout.astro";
 import { getSortedLiveShorts } from "#shorts";
 import type { CollectionEntry } from "astro:content";
 import ShortListing from "#components/shorts/ShortListing.astro";
+import { HeaderVariant } from "#components/common/Header.astro";
 
 export async function getStaticPaths() {
   function shortToPath(short: CollectionEntry<"shorts">) {
@@ -28,8 +29,9 @@ const shorts = [short];
 ---
 
 <SubpageLayout
-  title="Shorts"
+  title={short.data.title ?? ""}
   description="Feed of short and not-so-short but definitely unstructured thoughts and ideas."
+  headerVariant={HeaderVariant.Short}
 >
   <ShortListing shorts={shorts} />
 </SubpageLayout>

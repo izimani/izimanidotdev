@@ -7,6 +7,7 @@ import { PAGES } from "../../structure";
 export enum HeaderVariant {
   Home = "home",
   Subpage = "subpage",
+  Short = "short",
 }
 
 interface Props {
@@ -60,6 +61,11 @@ const { variant, title, description } = Astro.props;
         font-size: 2.5rem;
       }
     }
+
+    & .shorts-link {
+      color: var(--text-color);
+      text-decoration: none;
+    }
   }
 
   .title-wrapper {
@@ -82,15 +88,37 @@ const { variant, title, description } = Astro.props;
 <header>
   <div class="title-wrapper">
     <hgroup
-      class:list={[
-        "title",
-        variant === HeaderVariant.Subpage && "title__subpage",
-      ]}
+      class:list={["title", variant !== HeaderVariant.Home && "title__subpage"]}
     >
       <h1 class="main">
-        <a href={PAGES.HOME.href}>Izimani</a>{
-          title && (
+        <a href={PAGES.HOME.href}>Izimani</a>
+
+        {
+          variant !== HeaderVariant.Short && title && (
             <span style="color: var(--sub-title-color);"> | {title}</span>
+          )
+        }
+        {
+          variant === HeaderVariant.Short && title && (
+            <span style="color: var(--sub-title-color);">
+              {" "}
+              |{" "}
+              <a class="shorts-link" href={PAGES.SHORTS.href}>
+                Shorts
+              </a>{" "}
+              | {title}
+            </span>
+          )
+        }
+        {
+          variant === HeaderVariant.Short && !title && (
+            <span style="color: var(--sub-title-color);">
+              {" "}
+              |{" "}
+              <a class="shorts-link" href={PAGES.SHORTS.href}>
+                Shorts
+              </a>
+            </span>
           )
         }
       </h1>

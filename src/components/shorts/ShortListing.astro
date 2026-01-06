@@ -71,6 +71,10 @@ for (const short of shorts) {
     }
   }
 
+  .short-date {
+    color: var(--date-color);
+  }
+
   .short-link {
     display: block;
     color: var(--date-color);
@@ -118,9 +122,9 @@ for (const short of shorts) {
     shorts.map((short) => (
       <article class="short">
         <div class="short-metadata">
-          <a href={shortToLink(short)} class="short-link">
+          <div class="short-date">
             <Time date={short.data.date} />
-          </a>
+          </div>
           <span class="short-metadata-separator" />
           <div class="short-categories">
             {short.data.categories.map((c) => (
@@ -132,6 +136,10 @@ for (const short of shorts) {
               </a>
             ))}
           </div>
+          <span class="short-metadata-separator" />
+          <a href={shortToLink(short)} class="short-link">
+            permalink
+          </a>
         </div>
         <div class="short-content">
           <h2 class="short-title">{short.data.title}</h2>
